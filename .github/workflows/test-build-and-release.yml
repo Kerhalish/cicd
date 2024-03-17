@@ -43,10 +43,6 @@ jobs:
       - name: Creating tar.gz
         run: |
           tar -czvf simplecalculator.tar.gz simplecalculator
-      - name: Create neptun.txt
-        run: |
-          echo "VDQWFA" > neptun.txt
-          tar -rvf simplecalculator.tar.gz neptun.txt
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -54,3 +50,4 @@ jobs:
           title: "Development build"
           files: |
             simplecalculator.tar.gz
+
