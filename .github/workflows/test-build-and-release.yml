@@ -17,10 +17,10 @@ jobs:
       - name: Testing with check
         run: |
           ./check_operations
+
   static-analysis:
     name: Static code analysis
     runs-on: ubuntu-latest
-    needs: [unit-test]
     steps:
       - name: Install splint
         run: |
@@ -28,11 +28,12 @@ jobs:
       - name: Static analysis with splint
         run: |
           splint --compdef --exportlocal simplecalculator.c operations.c
+
   building-and-delivery:
     name: Build and delivery
     permissions:
       contents: write
-    needs: [unit-test]
+    needs: [unit-test, static-analysis]  # Megváltoztatva: mindkét job sikeres lefutásához szükséges
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -50,4 +51,3 @@ jobs:
           title: "Development build"
           files: |
             simplecalculator.tar.gz
-
