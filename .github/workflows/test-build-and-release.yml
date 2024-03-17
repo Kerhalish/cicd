@@ -45,7 +45,7 @@ jobs:
           tar -czvf simplecalculator.tar.gz simplecalculator
       - name: Create neptun.txt
         run: |
-          echo "<neptun_kód>" > neptun.txt
+          echo "VDQWFA" > neptun.txt
           tar -rvf simplecalculator.tar.gz neptun.txt
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
